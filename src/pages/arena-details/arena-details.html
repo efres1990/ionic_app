@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Cards Clash Royale
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-item *ngFor="let card of cards">
+      <ion-card>
+        <ion-card-title style="text-align: center;">
+          {{card.name}}
+        </ion-card-title>
+        <img src="https://www.clashapi.xyz/images/cards/{{card.idName}}.png" />
+        <ion-card-content>
+          <ion-card-title>
+            Description
+          </ion-card-title>
+          <p>Description {{card.description}}</p>
+
+        </ion-card-content>
+      </ion-card>
+
+
+    </ion-item>
+  </ion-card>
+
+</ion-content>

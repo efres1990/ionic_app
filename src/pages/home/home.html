@@ -1,14 +1,38 @@
-<ion-header>
+<ion-header color="#488bf4">
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Arenas Clash Royale
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+  <ion-card color="grey">
+    <ion-item *ngFor="let arena of arenas" (click)="goRestaurantDetails(arena)">
+      <ion-card>
+          <h2> {{arena.name}}</h2>
+          <p>Arena {{arena.number}}</p>
+    
+        <img src="https://www.clashapi.xyz/images/arenas/{{arena.idName}}.png" />
+        <ion-row>
+          <ion-col>
+            <div style="text-transform: none;"ion-button icon-left clear small>
+              <img class=image src="../../assets/imgs/coin.png">
+              <div> Oro de victoria {{arena.victoryGold}}</div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div  style="text-transform: none;" ion-button icon-left clear small>
+              <img class=image src="../../assets/imgs/cup.png">
+              Trofeos {{arena.minTrophies}}
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+
+
+    </ion-item>
+  </ion-card>
+
 </ion-content>
