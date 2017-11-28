@@ -1,7 +1,9 @@
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { ModalController, IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { Component, ViewChild, ElementRef } from '@angular/core';
-
 import { CardDataProvider } from '../../providers/cards-data/cards-data';
+import { ModalPage } from '../../pages/modal/modal';
+import { HomePage } from '../home/home';
+
 /**
  * Generated class for the ArenaDetailsComponent component.
  *
@@ -16,9 +18,9 @@ export class ArenaDetailsComponent {
   arenaInfo: any;
   cards: Array<Object>;
   hasOwnProperty = Object.prototype.hasOwnProperty;
-
+  dialog: any;
   constructor(public navCtrl: NavController, public platform: Platform,
-    public navParams: NavParams, public cardData: CardDataProvider) {
+    public navParams: NavParams, public cardData: CardDataProvider, public modalCtrl: ModalController) {
     this.arenaInfo = navParams.data.arenaData;
     this.cards = [];
     console.log("asda" + this.arenaInfo.cardUnlocks);
@@ -37,26 +39,22 @@ export class ArenaDetailsComponent {
 
   isEmpty(obj) {
 
-    // null and undefined are "empty"
     if (obj == null) return true;
-
-    // Assume if it has a length property with a non-zero value
-    // that that property is correct.
     if (obj.length > 0) return false;
     if (obj.length === 0) return true;
-
-    // If it isn't an object at this point
-    // it is empty, but it can't be anything *but* empty
-    // Is it empty?  Depends on your application.
     if (typeof obj !== "object") return true;
-
-    // Otherwise, does it have any properties of its own?
-    // Note that this doesn't handle
-    // toString and valueOf enumeration bugs in IE < 9
     for (var key in obj) {
       if (this.hasOwnProperty.call(obj, key)) return false;
     }
 
     return true;
+  }
+  openModal(card) {
+    console.log("Open modal " + card);
+    let modal = this.modalCtrl.create(ModalPage, card);
+    modal.present();
+  }
+  ionViewDidLeave() {
+    this.navCtrl.setRoot(HomePage);
   }
 }

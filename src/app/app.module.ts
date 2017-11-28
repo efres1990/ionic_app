@@ -10,11 +10,18 @@ import { ArenaDetailsComponent } from '../pages/arena-details/arena-details';
 import { Splash } from '../pages/splash-screen/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { ModalPage } from '../pages/modal/modal';
+import { TabsPage } from '../pages/tabs/tabs';
+import { GamePage } from '../pages/game/game';
+
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
 import { CardDataProvider } from '../providers/cards-data/cards-data';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
+
 var config = {
   apiKey: "AIzaSyAGefjIcoiM-_ppHAdbNGUM2fA2_Gh3KYc",
   authDomain: "loginpractica.firebaseapp.com",
@@ -27,28 +34,37 @@ var config = {
   declarations: [
     MyApp,
     HomePage,
+    GamePage,
     LoginPage,
     SignupPage,
+    ModalPage,
+    TabsPage,
     ArenaDetailsComponent,
     Splash  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),    
-    AngularFireAuthModule,    
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,    
     HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    GamePage,
+    ModalPage,
     ArenaDetailsComponent,
     Splash,
     LoginPage,
+    TabsPage,
     SignupPage  ],
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabaseModule,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ArenaDataProvider,
     CardDataProvider

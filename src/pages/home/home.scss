@@ -4,3 +4,24 @@ $toolbar-background: "#488bf4";
 .image{
     padding: 5px;
 }
+.image_card{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.item_card{
+    background-color: #00b8d4;
+    border-color: red;
+    border-top: 3px solid #0088a3
+    
+}
+.card-md {
+    border-radius: 12px;
+}
+.toolbar-background {
+    background-color: #00b8d4 ;
+  }
+  ion-card {
+    border-top: 3px solid #0088a3;
+    border: 3px solid #0088a3
+    
+ }

@@ -7,32 +7,27 @@
 </ion-header>
 
 <ion-content>
-  <ion-card color="grey">
     <ion-item *ngFor="let arena of arenas" (click)="goRestaurantDetails(arena)">
       <ion-card>
-          <h2> {{arena.name}}</h2>
+        <img class=image_card src="https://www.clashapi.xyz/images/arenas/{{arena.idName}}.png" />
+        
+        <ion-item class="item_card">
+          <h1> {{arena.name}}</h1>
           <p>Arena {{arena.number}}</p>
-    
-        <img src="https://www.clashapi.xyz/images/arenas/{{arena.idName}}.png" />
-        <ion-row>
-          <ion-col>
-            <div style="text-transform: none;"ion-button icon-left clear small>
-              <img class=image src="../../assets/imgs/coin.png">
-              <div> Oro de victoria {{arena.victoryGold}}</div>
-            </div>
-          </ion-col>
-          <ion-col>
-            <div  style="text-transform: none;" ion-button icon-left clear small>
-              <img class=image src="../../assets/imgs/cup.png">
-              Trofeos {{arena.minTrophies}}
-            </div>
-          </ion-col>
-        </ion-row>
+          <div style="text-transform: none;" ion-button icon-left clear small>
+            <img class=image src="../../assets/imgs/coin.png">
 
+            <h3> Oro de victoria {{arena.victoryGold}}</h3>
+          </div>
+
+          <div style="text-transform: none;" ion-button icon-left clear small>
+            <img class=image src="../../assets/imgs/cup.png">
+            <h3>Trofeos {{arena.minTrophies}}</h3> 
+          </div>
+        </ion-item>
       </ion-card>
 
 
     </ion-item>
-  </ion-card>
 
 </ion-content>
