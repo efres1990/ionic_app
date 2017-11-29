@@ -6,19 +6,51 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-   
-    <ion-item *ngFor="let card of cards">
-      <ion-card class="name_card">
-        <ion-card-title style="text-align: center;">
-          {{card.name}}
-          <ion-icon name="ios-alert-outline" item-start (click)="openModal(card)"></ion-icon>
-          
-        </ion-card-title>
-        <img src="https://www.clashapi.xyz/images/cards/{{card.idName}}.png" />
 
-      </ion-card>
+  <ion-item *ngFor="let card of cards">
+    <ion-card class="name_card">
+      <ion-row>
+        <ion-col col-4>
+          <img src="https://www.clashapi.xyz/images/cards/{{card.idName}}.png" />
+        </ion-col>
+        <ion-col col-8>
+          <ion-row>
+            <ion-col col-10>
+              <h1 style="text-align: center;">{{card.name}}</h1>
+
+            </ion-col>
+            <ion-col col-2>
+              <ion-icon class="custom-icon" name="ios-information-circle"(click)="openModal(card)"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-card class="">
+            <ion-row>
+              <ion-col col-6>
+                <h2 style="text-align: center;">Type:</h2>
+                <h3 style="text-align: center;">{{card.type}}</h3>
+              </ion-col>
+              <ion-col col-6>
+                <h2 style="text-align: center;">Rarity:</h2>
+                <h3 style="text-align: center;">{{card.rarity}}</h3>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-col>        
+      </ion-row>
+      <ion-row class="row_elixir">
+        <ion-col col-7>
+            <h1 style="text-align: right;">Coste {{card.elixirCost}}</h1>
+            
+        </ion-col>
+        <ion-col col-5>
+            <ion-icon class="custom-icon_elixir" name="ios-water"></ion-icon>
+            
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
 
 
-    </ion-item>
+  </ion-item>
 
 </ion-content>

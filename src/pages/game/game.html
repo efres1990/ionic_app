@@ -5,8 +5,8 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <link href="../../assets/animate.css" rel="stylesheet">
-    
+  <link href="../../assets/animate.css" rel="stylesheet">
+
   <ion-navbar>
     <ion-title>GamePage</ion-title>
   </ion-navbar>
@@ -15,13 +15,23 @@
 
 
 <ion-content padding>
-    <div class="list card animated  tada">  
-        <div class="item item-divider"></div>
-        <div class="item item-body">
-          <div>
-              <img class=image src="../../assets/imgs/{{img}}" (click)="openChest()">
-            </div>
-        </div>
-      </div>  
-    
+  <div class="list card animated  tada">
+    <div class="item item-divider"></div>
+    <div class="item item-body">
+      <div>
+        <img class=image src="../../assets/imgs/{{img}}" (click)="openChest()">
+      </div>
+    </div>
+  </div>
+
+</ion-content>
+<ion-content>
+  <ion-card>
+    <ion-item *ngFor="let chest of chets">
+      <h1>{{chest.name}}</h1>
+      <img src="https://www.clashapi.xyz/images/cards/{{chest.idName}}.png" />
+
+    </ion-item>
+  </ion-card>
+
 </ion-content>

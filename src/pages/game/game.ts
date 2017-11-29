@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
-
+import {ChestDataProvider} from '../../providers/chest-data/chest-data';
 /**
  * Generated class for the GamePage page.
  *
@@ -16,8 +16,15 @@ import { HomePage } from '../home/home';
 })
 export class GamePage {
   public img: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  chests: Array<Object> = [];  
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,public chestData:ChestDataProvider) {
     this.img='super-magical-chest-close.png';
+    this.chestData.getChest().then(arenaList => {
+      this.chests = arenaList;
+      console.log("Chest " + this.chests);
+
+    })
   }
 
   ionViewDidLoad() {
@@ -29,5 +36,6 @@ export class GamePage {
      }
   public openChest() {
     this.img = 'super-magical-chest-open.png';
+   
   }
 }

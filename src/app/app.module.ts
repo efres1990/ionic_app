@@ -21,6 +21,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { ChestDataProvider } from '../providers/chest-data/chest-data';
 
 var config = {
   apiKey: "AIzaSyAGefjIcoiM-_ppHAdbNGUM2fA2_Gh3KYc",
@@ -67,7 +68,8 @@ var config = {
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ArenaDataProvider,
-    CardDataProvider
+    CardDataProvider,
+    ChestDataProvider
   ]
 })
 export class AppModule {}
