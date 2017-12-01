@@ -6,7 +6,6 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-
   <ion-item *ngFor="let card of cards">
     <ion-card class="name_card">
       <ion-row>
@@ -26,11 +25,11 @@
           <ion-card class="">
             <ion-row>
               <ion-col col-6>
-                <h2 style="text-align: center;">Type:</h2>
+                <h2 style="text-align: center;font-weight: bold;">Type:</h2>
                 <h3 style="text-align: center;">{{card.type}}</h3>
               </ion-col>
               <ion-col col-6>
-                <h2 style="text-align: center;">Rarity:</h2>
+                <h2 style="text-align: center;font-weight: bold;">Rarity:</h2>
                 <h3 style="text-align: center;">{{card.rarity}}</h3>
               </ion-col>
             </ion-row>
@@ -39,7 +38,7 @@
       </ion-row>
       <ion-row class="row_elixir">
         <ion-col col-7>
-            <h1 style="text-align: right;">Coste {{card.elixirCost}}</h1>
+            <h1 style="text-align: right;">Cost {{card.elixirCost}}</h1>
             
         </ion-col>
         <ion-col col-5>
@@ -53,4 +52,6 @@
 
   </ion-item>
 
+  <div *ngIf="nodata" id="sidebar">
+    </div>
 </ion-content>
