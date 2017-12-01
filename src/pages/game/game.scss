@@ -4,4 +4,18 @@ page-game {
 .chat-item.ng-enter {
     -webkit-animation: fadeInLeft 6s;
     animation: fadeInLeft 10s;
+        height:50px;
+
+}
+.content_cards{
+    margin:10dp;
+}
+.imagechest{
+    height:200px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    display: block;
 }

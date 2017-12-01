@@ -14,25 +14,42 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="content_cards">
   <div class="list card animated  tada">
     <div class="item item-divider"></div>
     <div class="item item-body">
-      <div>
-        <img class=image src="../../assets/imgs/{{img}}" (click)="openChest()">
+      <div class="chest">
+        <img style="text-align: center;" class=imagechest src="../../assets/imgs/{{img}}" (click)="openChest()">
       </div>
     </div>
   </div>
-
-
-</ion-content>
-<ion-content>
-  <ion-card>
-    <ion-item *ngFor="let chest of chets">
-      <h1>{{chest.name}}</h1>
-      <img src="https://www.clashapi.xyz/images/cards/{{chest.idName}}.png" />
-
-    </ion-item>
-  </ion-card>
-
+  <h1 style="text-align: center;">{{premio}}</h1>
+  
+  <ion-scroll padding scrollX="true" style="width:100vw; height:120px">
+    <ion-row nowrap class="headerChip">
+      <div *ngFor="let chest of chests">
+        <div class="list card animated  jackInTheBox">
+          <div class="item item-body">
+            <div>
+              <img padding src="https://www.clashapi.xyz/images/cards/{{chest.idName}}.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-row>
+    
+  </ion-scroll>
+  <ion-scroll padding scrollX="true" style="width:100vw; height:120px">
+    <ion-row nowrap class="headerChip">
+      <div *ngFor="let chest1 of chestsFirst">
+        <div class="list card animated  jackInTheBox">
+          <div class="item item-body">
+            <div>
+              <img padding src="https://www.clashapi.xyz/images/cards/{{chest1.idName}}.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-row>
+  </ion-scroll>
 </ion-content>
