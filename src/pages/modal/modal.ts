@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, Platform, ViewController, NavController, NavParams } from 'ionic-angular';
-import { ArenaDetailsComponent } from '../../pages/arena-details/arena-details';
+import { IonicPage, ViewController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the ModalPage page.

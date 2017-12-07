@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ChestDataProvider } from '../../providers/chest-data/chest-data';
 /**
  * Generated class for the GamePage page.
@@ -20,9 +19,10 @@ export class GamePage {
   chestsFirst: Array<Object> = [];
   public premio: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public chestData: ChestDataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public chestData: ChestDataProvider, private toastCtrl: ToastController) {
     this.img = 'super-magical-chest-close.png';
     this.chests = [];
+    this.premio = "";
 
   }
 
@@ -33,25 +33,37 @@ export class GamePage {
     this.img = 'super-magical-chest-close.png';
     this.chests = [];
     this.chestsFirst = [];
+    this.premio = "";
   }
   public openChest() {
     this.img = 'super-magical-chest-open.png';
-    this.chestData.getChest().then(chestList => {
-      console.log(chestList);
-      this.chests = chestList.slice(4, 8);
-      this.chestsFirst = chestList.slice(0, 4);
-      this.premio="!!PREMIOOOO¡¡";
-      //this.getSecondArray();
-      console.log(chestList + " First " + this.chestsFirst + "Segundo " + this.chests);
+    this.chestData.getChest()
+      .then(chestList => {
+        console.log(chestList);
+        this.chests = chestList.slice(4, 8);
+        this.chestsFirst = chestList.slice(0, 4);
+        this.premio = "!!PREMIOOOO¡¡";
+        //this.getSecondArray();
+        console.log(chestList + " First " + this.chestsFirst + "Segundo " + this.chests);
+      })
+      .catch(err => {
+        // Handle error
+        console.log("holiii" + err.message + "  " + err.code);
+        this.presentToast(err.message);
 
-    })
+      });
   }
-  /*public getSecondArray() {
-    for (let i = 0; i < this.chests.length/2; i++) {
-      this.chests.shift();
-      this.chestsFirst.pop();
-      
-    }
-  }*/
+  presentToast(err) {
+    let toast = this.toastCtrl.create({
+      message: err,
+      duration: 3000,
+      position: 'top'
+    });
 
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
 }

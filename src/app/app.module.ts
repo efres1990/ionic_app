@@ -13,6 +13,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { ModalPage } from '../pages/modal/modal';
 import { TabsPage } from '../pages/tabs/tabs';
 import { GamePage } from '../pages/game/game';
+import { Network } from '@ionic-native/network';
 
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
 import { CardDataProvider } from '../providers/cards-data/cards-data';
@@ -22,6 +23,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { ChestDataProvider } from '../providers/chest-data/chest-data';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 var config = {
   apiKey: "AIzaSyAGefjIcoiM-_ppHAdbNGUM2fA2_Gh3KYc",
@@ -41,6 +43,7 @@ var config = {
     ModalPage,
     TabsPage,
     ArenaDetailsComponent,
+    ProgressBarComponent,    
     Splash  ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ var config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ArenaDataProvider,
     CardDataProvider,
+    Network,
     ChestDataProvider
   ]
 })

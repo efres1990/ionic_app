@@ -4,7 +4,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
 import { Splash } from '../pages/splash-screen/splash-screen';
 import { Platform, ModalController } from 'ionic-angular';
-import { HomePage } from '../pages/home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
