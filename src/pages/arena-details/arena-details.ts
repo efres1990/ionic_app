@@ -1,10 +1,8 @@
-import { ModalController, LoadingController, IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { ModalController, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
+import { Component } from '@angular/core';
 import { CardDataProvider } from '../../providers/cards-data/cards-data';
 import { ModalPage } from '../../pages/modal/modal';
 import { HomePage } from '../home/home';
-import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 /**
  * Generated class for the ArenaDetailsComponent component.
  *
@@ -22,13 +20,14 @@ export class ArenaDetailsComponent {
   dialog: any;
   img: any;
   nodata: Boolean;
-  constructor( private loadingCtrl: LoadingController,public navCtrl: NavController, public platform: Platform,
+  loading = this.loadingCtrl.create({
+    content: 'Please wait...'
+  });
+  constructor(private loadingCtrl: LoadingController, public navCtrl: NavController, public platform: Platform,
     public navParams: NavParams, public cardData: CardDataProvider, public modalCtrl: ModalController) {
+    this.loading.present();
     this.arenaInfo = navParams.data.arenaData;
     this.cards = [];
-    /*let loadingPopup = this.loadingCtrl.create({
-      content: 'Loading data...'
-    });*/
     console.log("asda" + this.arenaInfo.cardUnlocks);
 
     for (let card = 0; card < this.arenaInfo.cardUnlocks.length; card++) {
@@ -42,6 +41,8 @@ export class ArenaDetailsComponent {
           this.img = "face_cry";
         }
       })
+      if (card == this.arenaInfo.cardUnlocks.length - 1)
+        this.loading.dismiss()
     }
     //loadingPopup.dismiss();
     //cardData.load();

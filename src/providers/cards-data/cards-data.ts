@@ -19,7 +19,7 @@ export class CardDataProvider {
       return Promise.resolve(this.data);
     }*/
     return new Promise(resolve => {
-      this.http.get('https://www.clashapi.xyz/api/cards/' + id, "")
+      this.http.get('http://www.clashapi.xyz/api/cards/' + id, "")
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
