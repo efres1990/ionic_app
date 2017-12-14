@@ -28,22 +28,25 @@ export class ArenaDetailsComponent {
     this.loading.present();
     this.arenaInfo = navParams.data.arenaData;
     this.cards = [];
-    console.log("asda" + this.arenaInfo.cardUnlocks);
+    console.log("asda" + this.arenaInfo.cardUnlocks.length);
+    if (this.arenaInfo.cardUnlocks.length == 0 || this.isEmpty(this.arenaInfo.cardUnlocks)) {
+      this.nodata = true;
+      console.log('Is Empty');
+      this.img = "face_cry.png";
 
-    for (let card = 0; card < this.arenaInfo.cardUnlocks.length; card++) {
+    } else {
+      this.nodata = false;
 
-      cardData.getCardsInfo(this.arenaInfo.cardUnlocks[card]).then(arenaList => {
-        if (!this.isEmpty(arenaList)) {
+      for (let card = 0; card < this.arenaInfo.cardUnlocks.length; card++) {
+
+        cardData.getCardsInfo(this.arenaInfo.cardUnlocks[card]).then(arenaList => {
           this.cards.push(arenaList);
           console.log("Cartas" + this.cards);
-        } else {
-          console.log('Is Empty');
-          this.img = "face_cry";
-        }
-      })
-      if (card == this.arenaInfo.cardUnlocks.length - 1)
-        this.loading.dismiss()
+        })
+      }
     }
+    this.loading.dismiss()
+
     //loadingPopup.dismiss();
     //cardData.load();
   }

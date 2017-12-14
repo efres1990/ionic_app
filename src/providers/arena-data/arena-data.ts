@@ -26,7 +26,7 @@ export class ArenaDataProvider {
       return Promise.resolve(this.dataJson);
     }*/
     return new Promise(resolve => {
-      this.http.get('https://www.clashapi.xyz/api/arenas', "")
+      this.http.get('https://clashapi.now.sh/api/arenas', "")
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

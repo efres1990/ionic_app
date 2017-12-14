@@ -11,8 +11,12 @@ import { Splash } from '../pages/splash-screen/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ModalPage } from '../pages/modal/modal';
+import { ModalChestPage } from '../pages/modal-chest/modal-chest';
+
 import { TabsPage } from '../pages/tabs/tabs';
 import { GamePage } from '../pages/game/game';
+import { AboutPage } from '../pages/about/about';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { Network } from '@ionic-native/network';
 
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
@@ -38,9 +42,11 @@ var config = {
     MyApp,
     HomePage,
     GamePage,
+    AboutPage,
     LoginPage,
     SignupPage,
     ModalPage,
+    ModalChestPage,
     TabsPage,
     ArenaDetailsComponent,
     ProgressBarComponent,    
@@ -59,6 +65,8 @@ var config = {
     HomePage,
     GamePage,
     ModalPage,
+    ModalChestPage,
+    AboutPage,
     ArenaDetailsComponent,
     Splash,
     LoginPage,
@@ -73,6 +81,7 @@ var config = {
     ArenaDataProvider,
     CardDataProvider,
     Network,
+    SocialSharing,
     ChestDataProvider
   ]
 })

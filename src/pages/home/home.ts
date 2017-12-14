@@ -13,7 +13,9 @@ import { arenaObject } from './model/arenaObject';
 })
 export class HomePage {
   arenas: Array<Object> = [];
-  //arenasDB: FirebaseListObservable<any>;
+  arenasEmptyDatabase: boolean;
+
+  arenasDB: FirebaseListObservable<any[]>;
   backcolor: string = "#dddddd";
   loading = this.loadingCtrl.create({
     content: 'Please wait...'
@@ -21,15 +23,42 @@ export class HomePage {
 
   constructor(public database: AngularFireDatabase, public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public arenaData: ArenaDataProvider, private toastCtrl: ToastController) {
     //this.loading.present();
-   // this.arenasDB = this.database.list('arenas');
-    console.log(this.arenas.length);
-    if (this.arenas.length <= 0) {
+    this.arenasEmptyDatabase = false;
+    this.arenasDB = this.database.list('/arenas');
+    
+    /*if (this.arenasDB != null) {
+      this.arenasDB.$ref.once("value", (snapshot) => {
+        this.arenasEmptyDatabase = true;
+        
+        if (snapshot != null) {
+          snapshot.forEach((childSnapshot) => {
+            var key = childSnapshot.key;
+            this.arenas = childSnapshot.val().arenaList;
+            console.log('Arenas bbdd ' + this.arenas);
+            this.arenasEmptyDatabase = true;
+            return false
+            
+          });
+        }
+      })
+    }*/
+    /*this.database.list('/arenas', { preserveSnapshot: true })
+    .subscribe(snapshots => {
+      if (snapshots[0] != null && this.arenas.length <= 0) {
+        console.log("Key " + snapshots[0].key, "Value " + snapshots[0].val());
+        this.arenas = snapshots[0].val().arena;
+      }
+    });*/
+    if (this.arenas.length <= 0 && !this.arenasEmptyDatabase) {
+
       console.log("Hago la petición");
       arenaData.getArenas()
         .then(arenaList => {
           this.arenas = arenaList;
-          //this.arenasDB.push(arenaList);
-          console.log("Arenas" + this.arenas[0].minTrophies);
+          /*var update={};
+          update['newTitle'] = arenaList; */
+          this.arenasDB.push({ arenaList });
+          console.log("Arenas" + this.arenas[0]);
           //   this.loading.dismiss();
         })
         .catch(err => {
@@ -39,6 +68,7 @@ export class HomePage {
         });
     }
   }
+
   goRestaurantDetails(arena) {
     this.navCtrl.push(ArenaDetailsComponent, {
       arenaData: arena

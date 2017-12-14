@@ -19,23 +19,21 @@
 
 <ion-content padding-left padding-right class="sample-modal-page">
   <ion-list>
-    <ion-item  style="text-align: center;" >
-      <ion-row >
-        <ion-col col-6>
-            <ion-avatar class="avatar" >
-                <img src="http://www.clashapi.xyz/images/cards/{{data.idName}}.png" />
-              </ion-avatar>
-        </ion-col>
-      </ion-row>
-     
+    <ion-item style="text-align: center;">
+
+      <ion-avatar class="avatar">
+        <img class="avatar" src="https://clashapi.now.sh/images/cards/{{data.idName}}.png" />
+      </ion-avatar>
+
+
       <ion-note>
         Disponible en Arena: {{data.arena}}
       </ion-note>
     </ion-item>
     <ion-item class="item">
-        <div style="text-align: center;" class="my-content line-break"> {{data.description}}</div>
+      <div style="text-align: center;" class="my-content line-break"> {{data.description}}</div>
     </ion-item>
-    
+
   </ion-list>
-  
+
 </ion-content>
