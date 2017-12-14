@@ -16,38 +16,46 @@
 
 <ion-content class="content_cards">
   <div class="list card animated  tada">
-    <div class="item item-divider"></div>
-    <div class="item item-body">
-      <div class="chest">
-        <img style="text-align: center;" class=imagechest src="../../assets/imgs/{{img}}" (click)="openChest()">
-      </div>
+
+    <div class="chest">
+      <ion-card class="card-chest" (click)="openChest()">
+        <h2 padding style="text-align: center;">
+          <b class="h2-text">SPECIAL CHEST</b>
+        </h2>
+        <ion-row>
+          <ion-col col-8>
+            <img style="text-align: center;" class=imagechest src="../../assets/imgs/{{img}}">
+
+          </ion-col>
+          <ion-col col-4>
+            <h2>Cards:</h2>
+            <img src="../../assets/imgs/playing-cards.png">
+          </ion-col>
+
+        </ion-row>
+
+          <h1 class="h2-text" padding style="text-align: center;">{{close}}</h1>
+      </ion-card>
+
     </div>
   </div>
   <h1 style="text-align: center;">{{premio}}</h1>
-  
+
   <ion-scroll padding scrollX="true" style="width:100vw; height:120px">
     <ion-row nowrap class="headerChip">
       <div *ngFor="let chest of chests">
         <div class="list card animated  jackInTheBox">
-          <div class="item item-body">
-            <div>
-              <img padding src="http://www.clashapi.xyz/images/cards/{{chest.idName}}.png" />
-            </div>
-          </div>
+          <img padding src="https://clashapi.now.sh/images/cards/{{chest.idName}}.png" />
         </div>
       </div>
     </ion-row>
-    
+
   </ion-scroll>
   <ion-scroll padding scrollX="true" style="width:100vw; height:120px">
     <ion-row nowrap class="headerChip">
       <div *ngFor="let chest1 of chestsFirst">
         <div class="list card animated  jackInTheBox">
-          <div class="item item-body">
-            <div>
-              <img padding src="http://www.clashapi.xyz/images/cards/{{chest1.idName}}.png" />
-            </div>
-          </div>
+          <img padding src="https://clashapi.now.sh/images/cards/{{chest1.idName}}.png" />
         </div>
       </div>
     </ion-row>

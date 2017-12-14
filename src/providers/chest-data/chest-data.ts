@@ -23,7 +23,7 @@ export class ChestDataProvider {
       return Promise.resolve(this.dataJson);
     }*/
     return new Promise(resolve => {
-      this.http.get('http://www.clashapi.xyz/api/random-deck', "")
+      this.http.get('https://clashapi.now.sh/api/random-deck', "")
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

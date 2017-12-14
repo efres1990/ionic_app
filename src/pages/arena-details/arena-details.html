@@ -10,7 +10,7 @@
     <ion-card class="name_card">
       <ion-row>
         <ion-col col-4>
-          <img src="http://www.clashapi.xyz/images/cards/{{card.idName}}.png" />
+          <img src="https://clashapi.now.sh/images/cards/{{card.idName}}.png" />
         </ion-col>
         <ion-col col-8>
           <ion-row>
@@ -19,7 +19,7 @@
 
             </ion-col>
             <ion-col col-2>
-              <ion-icon class="custom-icon" name="ios-information-circle"(click)="openModal(card)"></ion-icon>
+              <ion-icon class="custom-icon" name="ios-information-circle" (click)="openModal(card)"></ion-icon>
             </ion-col>
           </ion-row>
           <ion-card class="">
@@ -34,16 +34,16 @@
               </ion-col>
             </ion-row>
           </ion-card>
-        </ion-col>        
+        </ion-col>
       </ion-row>
       <ion-row class="row_elixir">
         <ion-col col-7>
-            <h1 style="text-align: right;">Cost {{card.elixirCost}}</h1>
-            
+          <h1 style="text-align: right;">Cost {{card.elixirCost}}</h1>
+
         </ion-col>
         <ion-col col-5>
-            <ion-icon class="custom-icon_elixir" name="ios-water"></ion-icon>
-            
+          <ion-icon class="custom-icon_elixir" name="ios-water"></ion-icon>
+
         </ion-col>
       </ion-row>
 
@@ -53,5 +53,8 @@
   </ion-item>
 
   <div *ngIf="nodata" id="sidebar">
-    </div>
+      <img style="text-align: center;" class=imagechest src="../../assets/imgs/{{img}}">
+      <h3 style="text-align: center;"> UPPPS!! NO CARDS FOR THIS ARENA</h3>
+      
+  </div>
 </ion-content>
