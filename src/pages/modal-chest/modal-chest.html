@@ -9,10 +9,10 @@
 <ion-content   class="sample-modal-page">
   <ion-scroll  scrollX="true" style="width:400px; height:420px">
     <ion-row nowrap class="headerChip">
-      <ion-slides pager>
+      <ion-slides  pager>
 
         <ion-slide *ngFor="let d of data">
-          <img style="text-align: center;" src="http://www.clashapi.xyz/images/cards/{{d.idName}}.png" />
+          <img style="text-align: center;" class="image-modalchest" src="http://www.clashapi.xyz/images/cards/{{d.idName}}.png" />
         </ion-slide>
 
       </ion-slides>

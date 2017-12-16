@@ -6,6 +6,8 @@ import { NavController, Events, LoadingController, ToastController } from 'ionic
 import { Network } from '@ionic-native/network';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { arenaObject } from './model/arenaObject';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -13,19 +15,51 @@ import { arenaObject } from './model/arenaObject';
 })
 export class HomePage {
   arenas: Array<Object> = [];
-  arenasEmptyDatabase: boolean;
-
+  arenasEmptyDatabase: boolean = true;
   arenasDB: FirebaseListObservable<any[]>;
   backcolor: string = "#dddddd";
   loading = this.loadingCtrl.create({
     content: 'Please wait...'
   });
 
-  constructor(public database: AngularFireDatabase, public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public arenaData: ArenaDataProvider, private toastCtrl: ToastController) {
+  constructor(public platform: Platform, public database: AngularFireDatabase, public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public arenaData: ArenaDataProvider, private toastCtrl: ToastController) {
     //this.loading.present();
-    this.arenasEmptyDatabase = false;
-    this.arenasDB = this.database.list('/arenas');
-    
+    //this.arenasEmptyDatabase = false;
+      this.arenasDB = this.database.list('/arenas');
+      if (this.arenas.length <= 0) {
+
+        console.log("Hago la petición");
+        arenaData.getArenas()
+          .then(arenaList => {
+            this.arenas = arenaList;
+            this.saveDataBase(this.arenas);
+           /* platform.ready().then(() => {
+              this.nativeStorage.setItem('Arenas', { property: this.arenas })
+              .then(
+              () => console.log('Stored item!'),
+              error => console.error('Error storing item', error)
+              );
+            });*/
+           /* this.nativeStorage.getItem('Arenas')
+            .then(
+              data => console.log(data),
+              error => console.error(error)
+            );*/
+            /*var update={};
+            update['newTitle'] = arenaList; */
+            //if (this.arenasEmptyDatabase)
+              //this.saveDataBase(arenaList);
+            console.log("Arenas" + this.arenas[0]);
+            //   this.loading.dismiss();
+          })
+          .catch(err => {
+            // Handle error
+            console.log("holiii" + err.message + "  " + err.code);
+            this.presentToast(err.message);
+          });
+      }
+   
+
     /*if (this.arenasDB != null) {
       this.arenasDB.$ref.once("value", (snapshot) => {
         this.arenasEmptyDatabase = true;
@@ -49,27 +83,10 @@ export class HomePage {
         this.arenas = snapshots[0].val().arena;
       }
     });*/
-    if (this.arenas.length <= 0 && !this.arenasEmptyDatabase) {
-
-      console.log("Hago la petición");
-      arenaData.getArenas()
-        .then(arenaList => {
-          this.arenas = arenaList;
-          /*var update={};
-          update['newTitle'] = arenaList; */
-          this.arenasDB.push({ arenaList });
-          console.log("Arenas" + this.arenas[0]);
-          //   this.loading.dismiss();
-        })
-        .catch(err => {
-          // Handle error
-          console.log("holiii" + err.message + "  " + err.code);
-          this.presentToast(err.message);
-        });
-    }
+    
   }
 
-  goRestaurantDetails(arena) {
+  goArenaDetails(arena) {
     this.navCtrl.push(ArenaDetailsComponent, {
       arenaData: arena
     });
@@ -86,6 +103,11 @@ export class HomePage {
     });
 
     toast.present();
+  }
+
+  saveDataBase(listArena) {
+    this.arenasDB.push( {listaArenas:listArena} );
+    this.arenasEmptyDatabase = false;
   }
 }
 

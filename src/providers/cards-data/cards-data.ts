@@ -15,9 +15,6 @@ export class CardDataProvider {
 
   public load(id: String) {
     console.log("Entramos a pedir las cartas");
-    /*if (this.data) {
-      return Promise.resolve(this.data);
-    }*/
     return new Promise(resolve => {
       this.http.get('https://clashapi.now.sh/api/cards/' + id, "")
         .map(res => res.json())
@@ -29,34 +26,11 @@ export class CardDataProvider {
     });
 
   }
-  //REVISAR
   getCardsInfo(idCard: any) {
     this.idCards = idCard;
     console.log("Id " + idCard);
     return this.load(idCard).then(data => {
-      //console.log("Cartas solicitadas " + data[0].name);
       return data;
     })
   }
-  /*var promises = [];
-  for(var i = 0; i < 5; i++) {
-    var promise = $http.get('/data' + i);
-    promises.push(promise);
-  }
-  $q.all(promises).then(doSomethingAfterAllRequests);*/
-  
-  /*getCardsInfo(idCard: any): Promise<any> {
-    let promises_array: Array<any> = [];
-    this.idCards = idCard;
-    console.log(this.idCards);
-    for (let id of this.idCards) {
-      promises_array.push(new Promise(function (resolve, reject) {
-        this.load(id).then(data => {
-          console.log("Cartas solicitadas " + data.length);
-          return data;
-        })
-      }));
-      return Promise.all(promises_array);
-    }
-  }*/
 }

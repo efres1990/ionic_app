@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ModalPage } from '../pages/modal/modal';
 import { ModalChestPage } from '../pages/modal-chest/modal-chest';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { GamePage } from '../pages/game/game';
@@ -27,7 +28,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { ChestDataProvider } from '../providers/chest-data/chest-data';
-import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 var config = {
   apiKey: "AIzaSyAGefjIcoiM-_ppHAdbNGUM2fA2_Gh3KYc",
@@ -37,6 +37,7 @@ var config = {
   storageBucket: "",
   messagingSenderId: "76186552008"
 };
+
 @NgModule({
   declarations: [
     MyApp,
@@ -49,7 +50,6 @@ var config = {
     ModalChestPage,
     TabsPage,
     ArenaDetailsComponent,
-    ProgressBarComponent,    
     Splash  ],
   imports: [
     BrowserModule,
@@ -74,6 +74,7 @@ var config = {
     SignupPage  ],
   providers: [
     StatusBar,
+    NativeStorage,
     SplashScreen,
     AngularFireDatabaseModule,
     AngularFireDatabase,

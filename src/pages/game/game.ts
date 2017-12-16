@@ -10,7 +10,6 @@ import { ModalChestPage } from '../../pages/modal-chest/modal-chest';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-game',
   templateUrl: 'game.html',
@@ -51,7 +50,7 @@ export class GamePage {
         this.chestsAll=chestList;
         this.chests = chestList.slice(4, 8);
         this.chestsFirst = chestList.slice(0, 4);
-        this.premio = "!!PREMIOOOO¡¡";
+        this.premio = "!!YOUR NEW CARDS¡¡";
         //this.getSecondArray();
         console.log(chestList + " First " + this.chestsFirst + "Segundo " + this.chests);
         /*console.log("Open modal " + this.chestsAll);

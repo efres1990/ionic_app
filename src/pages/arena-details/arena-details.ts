@@ -28,7 +28,7 @@ export class ArenaDetailsComponent {
     this.loading.present();
     this.arenaInfo = navParams.data.arenaData;
     this.cards = [];
-    console.log("asda" + this.arenaInfo.cardUnlocks.length);
+    console.log("Cards length " + this.arenaInfo.cardUnlocks.length);
     if (this.arenaInfo.cardUnlocks.length == 0 || this.isEmpty(this.arenaInfo.cardUnlocks)) {
       this.nodata = true;
       console.log('Is Empty');
@@ -75,6 +75,5 @@ export class ArenaDetailsComponent {
     modal.present();
   }
   ionViewDidLeave() {
-    this.navCtrl.setRoot(HomePage);
   }
 }

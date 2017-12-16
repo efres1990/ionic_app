@@ -18,10 +18,6 @@ export class ChestDataProvider {
     if (this.data) {
       return Promise.resolve(this.data);
     }
-   /* if (this.dataJson) {
-      
-      return Promise.resolve(this.dataJson);
-    }*/
     return new Promise(resolve => {
       this.http.get('https://clashapi.now.sh/api/random-deck', "")
         .map(res => res.json())
