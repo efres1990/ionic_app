@@ -14,27 +14,32 @@ export class LoginPage {
     password: ''
   }
   loading = this.loadingCtrl.create({
-    content: 'Please wait...'
+    content: 'Checking your credentials...'
   });
-  constructor(public loadingCtrl:LoadingController,private navCtrl: NavController, private afAuth: AngularFireAuth, private toastCtrl: ToastController) { }
+  constructor(public loadingCtrl: LoadingController, private navCtrl: NavController, private authentication: AngularFireAuth, private toastCtrl: ToastController) { }
   login() {
     this.loading.present();
-    this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
+    this.authentication.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
       .then(userProfile => {
-            this.navCtrl.push(HomePage);   
-            this.loading.dismiss();      
+        this.navCtrl.push(HomePage);
+        this.loading.dismiss();
       })
       .catch(err => {
         // Handle error
-        console.log("holiii"+err.message +"  "+err.code);
+        console.log("holaaa" + err.message + "  " + err.code);
         this.presentToast(err.message);
-        this.loading.dismiss();      
-        
-        if((err.code)==="auth/user-not-found"){
-        this.signup();
-        //this.loading.dismiss();      
-      }
+        this.loading.dismiss();
+
+        if ((err.code) === "auth/user-not-found") {
+          this.signup();
+        }
       });
+  }
+  logout() {
+    this.authentication.auth.signOut().then(() => {
+      this.navCtrl.push(LoginPage);
+
+    })
   }
   signup() {
     this.navCtrl.push(SignupPage, { email: this.loginData.email });
@@ -45,11 +50,11 @@ export class LoginPage {
       duration: 3000,
       position: 'top'
     });
-  
+
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
+
     toast.present();
   }
 }

@@ -13,7 +13,6 @@ export class ArenaDataProvider {
 
   constructor(public http: Http, public database: AngularFireDatabase) {
     console.log('Hello ArenaDataProvider Provider');
-    //this.dataJson = this.database.list('json');
     
   }
 
@@ -21,16 +20,12 @@ export class ArenaDataProvider {
     if (this.data) {
       return Promise.resolve(this.data);
     }
-   /* if (this.dataJson) {
-      
-      return Promise.resolve(this.dataJson);
-    }*/
+
     return new Promise(resolve => {
       this.http.get('https://clashapi.now.sh/api/arenas', "")
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
-          //this.dataJson.push(data);
           resolve(this.data);
         });
     });
