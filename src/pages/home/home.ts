@@ -26,6 +26,9 @@ export class HomePage {
     //this.loading.present();
     //this.arenasEmptyDatabase = false;
       this.arenasDB = this.database.list('/arenas');
+      this.arenasDB.$ref.orderByChild("listaArenas").once("child_added", function(snapshot) {
+        console.log(snapshot.key + " was " + snapshot.val().listaArenas + " meters tall");
+      });
       if (this.arenas.length <= 0) {
 
         console.log("Hago la petición");

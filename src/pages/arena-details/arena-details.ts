@@ -1,19 +1,24 @@
-import { ModalController, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
+import {IonicPage, ModalController, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { CardDataProvider } from '../../providers/cards-data/cards-data';
 import { ModalPage } from '../../components/modal/modal';
 import { HomePage } from '../home/home';
+
+
 /**
  * Generated class for the ArenaDetailsComponent component.
  *
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
+@IonicPage()
 @Component({
   selector: 'arena-details',
   templateUrl: 'arena-details.html'
 })
 export class ArenaDetailsComponent {
+  rootPage:any = HomePage;  
+  
   arenaInfo: any;
   cards: Array<Object>;
   hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -75,5 +80,5 @@ export class ArenaDetailsComponent {
     modal.present();
   }
   ionViewDidLeave() {
-  }
+    }
 }
