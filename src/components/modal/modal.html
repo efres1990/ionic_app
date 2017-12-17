@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header padding-left padding-right class="sample-modal-page">
+  <ion-toolbar>
+    <ion-title>
+      {{data.name}}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-left padding-right class="sample-modal-page">
+  <ion-list>
+    <ion-item style="text-align: center;">
+
+      <ion-avatar class="avatar">
+        <img class="avatar" src="https://clashapi.now.sh/images/cards/{{data.idName}}.png" />
+      </ion-avatar>
+
+
+      <ion-note>
+        Disponible en Arena: {{data.arena}}
+      </ion-note>
+    </ion-item>
+    <ion-item class="item">
+      <div style="text-align: center;" class="my-content line-break"> {{data.description}}</div>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>
