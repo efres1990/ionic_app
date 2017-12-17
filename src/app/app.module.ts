@@ -10,7 +10,9 @@ import { ArenaDetailsComponent } from '../pages/arena-details/arena-details';
 import { Splash } from '../pages/splash-screen/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
-import { ModalPage } from '../pages/modal/modal';
+import { ModalPage } from '../components/modal/modal';
+import { ModalChestComponent } from '../components/modal-chest/modal-chest';
+
 import { ModalChestPage } from '../pages/modal-chest/modal-chest';
 import { NativeStorage } from '@ionic-native/native-storage';
 
@@ -47,16 +49,17 @@ var config = {
     LoginPage,
     SignupPage,
     ModalPage,
+    ModalChestComponent,
     ModalChestPage,
     TabsPage,
     ArenaDetailsComponent,
-    Splash  ],
+    Splash],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(config),    
+    AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    AngularFireDatabaseModule,    
+    AngularFireDatabaseModule,
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -65,20 +68,21 @@ var config = {
     HomePage,
     GamePage,
     ModalPage,
+    ModalChestComponent,
     ModalChestPage,
     AboutPage,
     ArenaDetailsComponent,
     Splash,
     LoginPage,
     TabsPage,
-    SignupPage  ],
+    SignupPage],
   providers: [
     StatusBar,
     NativeStorage,
     SplashScreen,
     AngularFireDatabaseModule,
     AngularFireDatabase,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ArenaDataProvider,
     CardDataProvider,
     Network,
@@ -86,4 +90,4 @@ var config = {
     ChestDataProvider
   ]
 })
-export class AppModule {}
+export class AppModule { }

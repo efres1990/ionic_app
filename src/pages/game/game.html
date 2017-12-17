@@ -45,7 +45,7 @@
     <ion-row nowrap class="headerChip">
       <div *ngFor="let chest of chests">
         <div class="list card animated  jackInTheBox">
-          <img padding src="https://clashapi.now.sh/images/cards/{{chest.idName}}.png" />
+          <img padding src="https://clashapi.now.sh/images/cards/{{chest.idName}}.png" (click)="openModal(chest)" />
         </div>
       </div>
     </ion-row>
@@ -55,7 +55,7 @@
     <ion-row nowrap class="headerChip">
       <div *ngFor="let chest1 of chestsFirst">
         <div class="list card animated  jackInTheBox">
-          <img padding src="https://clashapi.now.sh/images/cards/{{chest1.idName}}.png" />
+          <img padding src="https://clashapi.now.sh/images/cards/{{chest1.idName}}.png" (click)="openModal(chest1)"/>
         </div>
       </div>
     </ion-row>

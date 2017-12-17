@@ -1,0 +1,93 @@
+<ion-header padding-left padding-right class="sample-modal-page">
+  <ion-toolbar>
+      <ion-buttons start>
+          <button ion-button (click)="dismiss()">
+            <ion-icon class="custom_close" name="md-close"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>
+      Description
+    </ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-left padding-right class="sample-modal-page">
+  <ion-list>
+    <ion-item style="text-align: center;">
+      <ion-row>
+        <ion-col col-3>
+          <ion-avatar class="avatar">
+            <img class="avatar" src="https://clashapi.now.sh/images/cards/{{data.idName}}.png" />
+            <ion-note class="name-card" padding style="text-align: left;">
+              Arena: {{data.arena}}
+            </ion-note>
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-9>
+          <h3 style="text-align: center;">
+            <b class="name-card">{{data.name}}</b>
+          </h3>
+          <div style="text-align: center;" class="my-content line-break"> {{data.description}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-item class="item">
+      <h3>
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon class="custom_elixir" name="ios-water"></ion-icon>
+          </ion-col>
+          <ion-col col-7>
+            <b style="text-align: left;">
+              Elixir Cost</b>
+          </ion-col>
+          <ion-col col-3>
+            <ion-note style="text-align: right;">
+              {{data.elixirCost}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+
+      </h3>
+    </ion-item>
+
+    <ion-item class="item">
+      <h3>
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon class="custom_debil" name="logo-freebsd-devil"></ion-icon>
+          </ion-col>
+          <ion-col col-7>
+            <b style="text-align: left;">
+              Species</b>
+          </ion-col>
+          <ion-col col-3>
+            <ion-note style="text-align: right;">
+              {{data.type}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      </h3>
+    </ion-item>
+    <ion-item class="item">
+      <h3>
+        <ion-row>
+          <ion-col col-1>
+            <ion-icon class="custom_rarity" name="ios-bug"></ion-icon>
+          </ion-col>
+          <ion-col col-7>
+            <b style="text-align: left;">Rarity</b>
+          </ion-col>
+          <ion-col col-2>
+            <ion-note style="text-align: right;">
+              {{data.rarity}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      </h3>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
