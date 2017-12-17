@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
 import { Splash } from '../pages/splash-screen/splash-screen';
@@ -13,7 +14,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   rootPage:any = TabsPage;
 
-  constructor(platform: Platform, private afAuth: AngularFireAuth, splashScreen: SplashScreen, public arenaDataProvider : ArenaDataProvider, modalCtrl: ModalController) {
+  constructor(platform: Platform, private afAuth: AngularFireAuth, statusBar: StatusBar, splashScreen: SplashScreen, public arenaDataProvider : ArenaDataProvider, modalCtrl: ModalController) {
     this.afAuth.authState.subscribe(auth => {
       if(!auth)
         this.rootPage = LoginPage;
@@ -21,9 +22,11 @@ export class MyApp {
         this.rootPage = TabsPage;
     });
     platform.ready().then(() => {
+      statusBar.styleDefault();
       let splash = modalCtrl.create(Splash);
       splash.present();
     });
+    //arenaDataProvider.load();
     
   }
 }
