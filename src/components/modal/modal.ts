@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ViewController, NavParams } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the ModalPage page.

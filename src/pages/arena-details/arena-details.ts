@@ -1,7 +1,7 @@
 import { ModalController, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { CardDataProvider } from '../../providers/cards-data/cards-data';
-import { ModalPage } from '../../pages/modal/modal';
+import { ModalPage } from '../../components/modal/modal';
 import { HomePage } from '../home/home';
 /**
  * Generated class for the ArenaDetailsComponent component.
