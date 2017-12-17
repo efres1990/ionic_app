@@ -3,10 +3,8 @@ import 'rxjs/add/operator/map';
 import { ArenaDetailsComponent } from '../arena-details/arena-details';
 import { ArenaDataProvider } from '../../providers/arena-data/arena-data';
 import { NavController, Events, LoadingController, ToastController } from 'ionic-angular';
-import { Network } from '@ionic-native/network';
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { arenaObject } from './model/arenaObject';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Platform } from 'ionic-angular';
 
 @Component({
@@ -23,74 +21,40 @@ export class HomePage {
   });
 
   constructor(public platform: Platform, public database: AngularFireDatabase, public loadingCtrl: LoadingController, public events: Events, public navCtrl: NavController, public arenaData: ArenaDataProvider, private toastCtrl: ToastController) {
-    //this.loading.present();
-    //this.arenasEmptyDatabase = false;
-      this.arenasDB = this.database.list('/arenas');
-      if (this.arenas.length <= 0) {
 
-        console.log("Hago la petición");
-        arenaData.getArenas()
-          .then(arenaList => {
-            this.arenas = arenaList;
-            this.saveDataBase(this.arenas);
-           /* platform.ready().then(() => {
-              this.nativeStorage.setItem('Arenas', { property: this.arenas })
-              .then(
-              () => console.log('Stored item!'),
-              error => console.error('Error storing item', error)
-              );
-            });*/
-           /* this.nativeStorage.getItem('Arenas')
-            .then(
-              data => console.log(data),
-              error => console.error(error)
-            );*/
-            /*var update={};
-            update['newTitle'] = arenaList; */
-            //if (this.arenasEmptyDatabase)
-              //this.saveDataBase(arenaList);
-            console.log("Arenas" + this.arenas[0]);
-            //   this.loading.dismiss();
-          })
-          .catch(err => {
-            // Handle error
-            console.log("holiii" + err.message + "  " + err.code);
-            this.presentToast(err.message);
-          });
-      }
-   
+    this.arenasDB = this.database.list('/arenas');
+    if (this.arenas.length <= 0) {
 
-    /*if (this.arenasDB != null) {
-      this.arenasDB.$ref.once("value", (snapshot) => {
-        this.arenasEmptyDatabase = true;
-        
-        if (snapshot != null) {
-          snapshot.forEach((childSnapshot) => {
-            var key = childSnapshot.key;
-            this.arenas = childSnapshot.val().arenaList;
-            console.log('Arenas bbdd ' + this.arenas);
-            this.arenasEmptyDatabase = true;
-            return false
-            
-          });
-        }
-      })
-    }*/
-    /*this.database.list('/arenas', { preserveSnapshot: true })
-    .subscribe(snapshots => {
-      if (snapshots[0] != null && this.arenas.length <= 0) {
-        console.log("Key " + snapshots[0].key, "Value " + snapshots[0].val());
-        this.arenas = snapshots[0].val().arena;
-      }
-    });*/
-    
+      console.log("Hago la petición");
+      arenaData.getArenas()
+        .then(arenaList => {
+          this.arenas = arenaList;
+          this.saveDataBase(this.arenas);
+
+          console.log("Arenas" + this.arenas[0]);
+          //   this.loading.dismiss();
+        })
+        .catch(err => {
+          // Handle error
+          console.log("Error " + err.message + "  " + err.code);
+          this.presentToast(err.message);
+        });
+    }
+
   }
-
+  /**
+   * Lanza la pantalla de detalles de la arena.
+   * @param arena arena.
+   */
   goArenaDetails(arena) {
     this.navCtrl.push(ArenaDetailsComponent, {
       arenaData: arena
     });
   }
+  /**
+   * Lanza Toast.
+   * @param err error.
+   */
   presentToast(err) {
     let toast = this.toastCtrl.create({
       message: err,
@@ -104,10 +68,33 @@ export class HomePage {
 
     toast.present();
   }
-
+  /**
+   * Se encarga de almacenar las arenas en la base de datos de firebase,
+   *  comprobando si exiten ya o no, si ya se ha guardado antes no la vuleve a guardar.
+   * @param listArena lista de las arenas a guardar.
+   */
   saveDataBase(listArena) {
-    this.arenasDB.push( {listaArenas:listArena} );
-    this.arenasEmptyDatabase = false;
+    if (this.arenasDB != null) {
+      this.arenasDB.$ref.once("value", (snapshot) => {
+
+        if (snapshot != null) {
+          snapshot.forEach((childSnapshot) => {
+            this.arenasEmptyDatabase = false;
+            return false
+
+          });
+          if (this.arenasEmptyDatabase) {
+            console.log('No estan almacenadas las arenas, almacenando...');
+
+            this.arenasDB.push({ listaArenas: listArena });
+          } else {
+            console.log('Ya estan almacenadas las arenas');
+          }
+        }
+      })
+    } else {
+      this.arenasDB.push({ listaArenas: listArena });
+    }
   }
 }
 

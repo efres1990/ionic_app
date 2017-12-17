@@ -21,8 +21,9 @@ export class ArenaDetailsComponent {
   img: any;
   nodata: Boolean;
   loading = this.loadingCtrl.create({
-    content: 'Please wait...'
+    content: 'Loading Cards...'
   });
+
   constructor(private loadingCtrl: LoadingController, public navCtrl: NavController, public platform: Platform,
     public navParams: NavParams, public cardData: CardDataProvider, public modalCtrl: ModalController) {
     this.loading.present();
@@ -46,11 +47,11 @@ export class ArenaDetailsComponent {
       }
     }
     this.loading.dismiss()
-
-    //loadingPopup.dismiss();
-    //cardData.load();
   }
-
+  /**
+   * Funcion para comprobar si un objeto esta vacio o no.
+   * @param obj objeto a comprobar
+   */
   isEmpty(obj) {
     this.nodata = true;
     if (obj == null) return true;
@@ -69,6 +70,10 @@ export class ArenaDetailsComponent {
 
     return true;
   }
+  /**
+   * Lanza el modal para mostrar la descripción de la carta.
+   * @param card carta a mostrar
+   */
   openModal(card) {
     console.log("Open modal " + card);
     let modal = this.modalCtrl.create(ModalPage, card);

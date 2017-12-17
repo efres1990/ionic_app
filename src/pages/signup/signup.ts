@@ -22,24 +22,25 @@ export class SignupPage {
     private afAuth: AngularFireAuth) {
     this.signupData.email = this.navParams.get('email');
   }
- 
+ /**
+  * Registro del usuario se comprueba que las contraseñas coincidan, si es asi
+  * de nuevo mediante una funcion que provee firebase createUserWithEmailAndPassword
+  * se registra el usuario en base de datos.
+  */
   signup() {
     if(this.signupData.password !== this.signupData.passwordRetyped) {
       let alert = this.alertCtrl.create({
         title: 'Error',
-        message: 'Your passwords does not match.',
+        message: 'The passwords are not the same',
         buttons: ['OK']
       });
       alert.present();
       return;
     }
- 
-     // Firebase Signup Code
      this.afAuth.auth.createUserWithEmailAndPassword(this.signupData.email, this.signupData.password)
     .then(auth => {
       this.navCtrl.push(HomePage);         
       
-      // Could do something with the Auth-Response
       console.log(auth);
     })
     .catch(err => {

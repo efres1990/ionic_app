@@ -19,8 +19,10 @@ export class Splash {
  
   }
  
+  /**
+   * Al acceder se lanza un Splash que durara en función de un timeout
+   */
   ionViewDidEnter() {
- 
     this.splashScreen.hide();
  
     setTimeout(() => {

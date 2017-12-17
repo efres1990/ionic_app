@@ -16,7 +16,14 @@ export class LoginPage {
   loading = this.loadingCtrl.create({
     content: 'Checking your credentials...'
   });
+
   constructor(public loadingCtrl: LoadingController, private navCtrl: NavController, private authentication: AngularFireAuth, private toastCtrl: ToastController) { }
+
+  /**
+   * Lanza el login.
+   * se utiliza la funcion signInWithEmailAndPassword que provee Firebase para autenticar
+   *  al usuario a través de la contraseña y el email.
+   */
   login() {
     this.loading.present();
     this.authentication.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
@@ -35,15 +42,17 @@ export class LoginPage {
         }
       });
   }
-  logout() {
-    this.authentication.auth.signOut().then(() => {
-      this.navCtrl.push(LoginPage);
-
-    })
-  }
+  /**
+   * Si el usuario no esta registrado lanzamos la pantalla de Registro.
+   */
   signup() {
     this.navCtrl.push(SignupPage, { email: this.loginData.email });
   }
+
+  /**
+   * Muestra un toast.
+   * @param err error.
+   */
   presentToast(err) {
     let toast = this.toastCtrl.create({
       message: err,
