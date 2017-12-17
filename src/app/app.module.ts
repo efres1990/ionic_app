@@ -20,7 +20,6 @@ import { GamePage } from '../pages/game/game';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
-import { Network } from '@ionic-native/network';
 
 //PROVIDERS
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
@@ -83,7 +82,6 @@ var config = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ArenaDataProvider,
     CardDataProvider,
-    Network,
     ChestDataProvider
   ]
 })

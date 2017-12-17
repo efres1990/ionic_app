@@ -1,4 +1,4 @@
-import {IonicPage, ModalController, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
+import { ModalController, LoadingController, NavController, NavParams, Platform } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { CardDataProvider } from '../../providers/cards-data/cards-data';
 import { ModalPage } from '../../components/modal/modal';
@@ -11,7 +11,6 @@ import { HomePage } from '../home/home';
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
-@IonicPage()
 @Component({
   selector: 'arena-details',
   templateUrl: 'arena-details.html'
@@ -55,7 +54,10 @@ export class ArenaDetailsComponent {
     //loadingPopup.dismiss();
     //cardData.load();
   }
-
+/**
+ * Comprobar si un objeto esta vacio o no.
+ * @param obj
+ */
   isEmpty(obj) {
     this.nodata = true;
     if (obj == null) return true;
