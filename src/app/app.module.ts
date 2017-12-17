@@ -13,13 +13,11 @@ import { SignupPage } from '../pages/signup/signup';
 import { ModalPage } from '../components/modal/modal';
 import { ModalChestComponent } from '../components/modal-chest/modal-chest';
 
-import { ModalChestPage } from '../pages/modal-chest/modal-chest';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { GamePage } from '../pages/game/game';
 import { AboutPage } from '../pages/about/about';
-import { SocialSharing } from '@ionic-native/social-sharing';
 import { Network } from '@ionic-native/network';
 
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
@@ -50,7 +48,6 @@ var config = {
     SignupPage,
     ModalPage,
     ModalChestComponent,
-    ModalChestPage,
     TabsPage,
     ArenaDetailsComponent,
     Splash],
@@ -69,7 +66,6 @@ var config = {
     GamePage,
     ModalPage,
     ModalChestComponent,
-    ModalChestPage,
     AboutPage,
     ArenaDetailsComponent,
     Splash,
@@ -86,7 +82,6 @@ var config = {
     ArenaDataProvider,
     CardDataProvider,
     Network,
-    SocialSharing,
     ChestDataProvider
   ]
 })
