@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { CardDataProvider } from '../../providers/cards-data/cards-data';
 import { ModalPage } from '../../components/modal/modal';
 import { HomePage } from '../home/home';
+
+
 /**
  * Generated class for the ArenaDetailsComponent component.
  *
@@ -14,6 +16,8 @@ import { HomePage } from '../home/home';
   templateUrl: 'arena-details.html'
 })
 export class ArenaDetailsComponent {
+  rootPage:any = HomePage;  
+  
   arenaInfo: any;
   cards: Array<Object>;
   hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -50,7 +54,10 @@ export class ArenaDetailsComponent {
     //loadingPopup.dismiss();
     //cardData.load();
   }
-
+/**
+ * Comprobar si un objeto esta vacio o no.©©©©
+ * @param obj
+ */
   isEmpty(obj) {
     this.nodata = true;
     if (obj == null) return true;
@@ -75,5 +82,5 @@ export class ArenaDetailsComponent {
     modal.present();
   }
   ionViewDidLeave() {
-  }
+    }
 }

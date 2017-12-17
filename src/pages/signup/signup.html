@@ -15,9 +15,9 @@
         <ion-input type="password" [(ngModel)]="signupData.password"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label floating>Re-Enter Password</ion-label>
+        <ion-label floating>Repeat Password</ion-label>
         <ion-input type="password" [(ngModel)]="signupData.passwordRetyped"></ion-input>
       </ion-item>
     </ion-list>
-    <button full ion-button (click)="signup()" [disabled]="!signupData.email || !signupData.password || !signupData.passwordRetyped">Signup</button>
+    <button class="button_signup" full ion-button (click)="signup()" [disabled]="!signupData.email || !signupData.password || !signupData.passwordRetyped">Signup</button>
   </ion-content>

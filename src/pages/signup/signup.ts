@@ -14,7 +14,7 @@ export class SignupPage {
     password: '',
     passwordRetyped: ''
   };
- 
+  
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
@@ -23,7 +23,7 @@ export class SignupPage {
     this.signupData.email = this.navParams.get('email');
   }
  
-  signup() {
+  signup() {    
     if(this.signupData.password !== this.signupData.passwordRetyped) {
       let alert = this.alertCtrl.create({
         title: 'Error',
@@ -52,4 +52,5 @@ export class SignupPage {
       alert.present();
     });
   }
+ 
 }
