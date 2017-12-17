@@ -20,6 +20,7 @@ import { GamePage } from '../pages/game/game';
 import { AboutPage } from '../pages/about/about';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { FavoritePage } from '../pages/favorite/favorite';
 
 //PROVIDERS
 import { ArenaDataProvider } from '../providers/arena-data/arena-data';
@@ -49,6 +50,7 @@ var config = {
     AboutPage,
     LoginPage,
     SignupPage,
+    FavoritePage,
     ModalPage,
     ModalChestComponent,
     TabsPage,
@@ -74,6 +76,7 @@ var config = {
     Splash,
     LoginPage,
     TabsPage,
+    FavoritePage,
     SignupPage],
   providers: [
     SplashScreen,

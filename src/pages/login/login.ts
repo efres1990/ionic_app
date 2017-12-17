@@ -4,6 +4,7 @@ import { NavController, ToastController, LoadingController } from 'ionic-angular
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../../pages/home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -16,7 +17,8 @@ export class LoginPage {
   loading = this.loadingCtrl.create({
     content: 'Checking your credentials...'
   });
-  constructor(public loadingCtrl: LoadingController, private navCtrl: NavController, private authentication: AngularFireAuth, private toastCtrl: ToastController) { }
+  constructor(public loadingCtrl: LoadingController, private navCtrl: NavController, private authentication: AngularFireAuth, private toastCtrl: ToastController) { 
+    }
   login() {
     this.loading.present();
     this.authentication.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
@@ -57,4 +59,5 @@ export class LoginPage {
 
     toast.present();
   }
+ 
 }

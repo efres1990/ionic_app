@@ -35,7 +35,7 @@ export class HomePage {
         arenaData.getArenas()
           .then(arenaList => {
             this.arenas = arenaList;
-            this.saveDataBase(this.arenas);
+            //this.saveDataBase(this.arenas);
            /* platform.ready().then(() => {
               this.nativeStorage.setItem('Arenas', { property: this.arenas })
               .then(

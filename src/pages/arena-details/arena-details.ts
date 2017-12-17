@@ -55,7 +55,7 @@ export class ArenaDetailsComponent {
     //cardData.load();
   }
 /**
- * Comprobar si un objeto esta vacio o no.
+ * Comprobar si un objeto esta vacio o no.©©©©
  * @param obj
  */
   isEmpty(obj) {
