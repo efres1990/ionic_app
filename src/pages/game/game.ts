@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {ModalController, IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ChestDataProvider } from '../../providers/chest-data/chest-data';
-import { ModalChestPage } from '../../pages/modal-chest/modal-chest';
+import { ModalChestComponent } from '../../components/modal-chest/modal-chest';
 
 /**
  * Generated class for the GamePage page.
@@ -78,5 +78,10 @@ export class GamePage {
     });
 
     toast.present();
+  }
+  openModal(card) {
+    console.log("Open modal " + card);
+    let modal = this.modalCtrl.create(ModalChestComponent, card);
+    modal.present();
   }
 }
